@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="title">
+    <h1>Market Research Survey</h1>
+    <h3>Please take 2 few moments to complete this satisfaction survey.</h3>
+</div>
+<form>
+    <h4> What is your age range?</h4>
+    <p id="age"></p>
+    <h4>What is your yearly income range?</h4>
+    <p id="income"></p>
+    <h4>Gender Identity</h4>
+    <input type="radio" name="gender">Male
+    <br>
+    <input type="radio" name="gender">Female
+    <br>
+    <input type="radio" name="gender">Nonbinary
+    <br>
+    <input type="radio" name="gender">other
+    <br><input type="text" class="text-1">
+    <h4>Which of the following products have your purchased in the last 2 months. Please check all that apply.</h4>
+    <input type="checkbox">Product 1
+    <br>
+    <input type="checkbox">Product 2
+    <br>
+    <input type="checkbox">Product 3
+    <h4>How often would you use our new product?</h4>
+    <input type="radio" name="gender">Dayly
+    <br>
+    <input type="radio" name="gender">Weekly
+    <br>
+    <input type="radio" name="gender">Monthly
+    <h4>What would you pay for the new product?</h4>
+    <span>$ <input type="text">.<input type="text"></span>
+    <p style="margin-left: 70px">Dollars<span style="margin-left: 150px">Cent</span></p>
+    <h4>What features would you like to see in the new product.</h4>
+    <textarea cols="50" rows="10" style="width: 293px;
+     min-width: 100%;
+    max-width: 100%;"></textarea>
+    <h4>Please rate your level of agreement with the following statements.</h4>
+    <table>
+        <tr>
+            <th style="background-color: #e6e6e6;"></th>
+            <th style="background-color: #e6e6e6;">Strongly Disagree</th>
+            <th style="background-color: #e6e6e6;">Disagree</th>
+            <th style="background-color: #e6e6e6;">Agree</th>
+            <th style="background-color: #e6e6e6;">Strongly Agree</th>
+        </tr>
+        <tr>
+            <td>Our products are priced fairly.</td>
+            <td><input type="radio">1</td>
+            <td><input type="radio">2</td>
+            <td><input type="radio">3</td>
+            <td><input type="radio">4</td>
+        </tr>
+        <tr>
+            <td style="background-color: #e6e6e6;">Our products are high quality.</td>
+            <td style="background-color: #e6e6e6;"><input type="radio">1</td>
+            <td style="background-color: #e6e6e6;"><input type="radio">2</td>
+            <td style="background-color: #e6e6e6;"><input type="radio">3</td>
+            <td style="background-color: #e6e6e6;"><input type="radio">4</td>
+        </tr>
+        <tr>
+            <td>You would recommend our product to a friend or coworker.</td>
+            <td><input type="radio">1</td>
+            <td><input type="radio">2</td>
+            <td><input type="radio">3</td>
+            <td><input type="radio">4</td>
+        </tr>
+    </table>
+    <br>
+    <button>Submit</button>
+    <script>
+        // Lấy thẻ input chứa tuổi
+        const agePickerInput = document.getElementById("age");
+        // lấy thẻ input chứa thu nhập
+        const incomePickerInput = document.getElementById("income");
+        // Tạo bảng chọn ngày
+        const datePicker = document.createElement("select");
+        // tạo bảng chọn thu nhập
+        const incomePicker = document.createElement("select");
+        // Tạo các tùy chọn tuổi
+        const ageOptions = [
+            {label: "0-10", start: 0, end: 10},
+            {label: "11-18", start: 11, end: 18},
+            {label: "25-30", start: 25, end: 34},
+            {label: "35-50", start: 35, end: 50},
+            {label: "50+", start: 50, end: 50}
+        ];
+        // Tùy chọn thu nhập
+        const incomeOptions = [
+            {label: "0$-2500$", start: 0, end: 2500},
+            {label: "25500$ - 50000$", start: 25500, end: 50000},
+            {label: "50500$ - 100000$", start: 50500, end: 100000},
+            {label: "100500$ - 200000$", start: 100500, end: 200000},
+            {label: "250000$+", start: 250000, end: 50}
+        ];
+        // Tạo các tùy chọn và thêm vào bảng chọn
+        ageOptions.forEach(optionData => {
+            const option = document.createElement("option");
+            option.value = optionData.label;
+            option.text = optionData.label;
+            option.dataset.start = optionData.start;
+            option.dataset.end = optionData.end;
+            datePicker.appendChild(option);
+        });
+        incomeOptions.forEach(optionData => {
+            const option = document.createElement("option");
+            option.value = optionData.label;
+            option.text = optionData.label;
+            option.dataset.start = optionData.start;
+            option.dataset.end = optionData.end;
+            incomePicker.appendChild(option);
+        });
+        // Gắn bảng chọn ngày vào trước thẻ input
+        agePickerInput.parentNode.insertBefore(datePicker, agePickerInput);
+        incomePickerInput.parentNode.insertBefore(incomePicker, incomePickerInput);
+
+        // Xử lý event khi người dùng chọn độ tuổi
+        datePicker.addEventListener("change", function () {
+            const selectedOption = datePicker.options[datePicker.selectedIndex];
+            const start = selectedOption.dataset.start;
+            const end = selectedOption.dataset.end;
+        });
+    </script>
+</form>
+</body>
+</html>
