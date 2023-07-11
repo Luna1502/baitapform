@@ -104,7 +104,7 @@
             {label: "100500$ - 200000$", start: 100500, end: 200000},
             {label: "250000$+", start: 250000, end: 50}
         ];
-        // Tạo các tùy chọn và thêm vào bảng chọn
+        // Tạo các tùy chọn và thêm vào bảng chọn, có vẻ hơi hard code =)) cần tìm cách khác
         ageOptions.forEach(optionData => {
             const option = document.createElement("option");
             option.value = optionData.label;
@@ -125,7 +125,7 @@
         agePickerInput.parentNode.insertBefore(datePicker, agePickerInput);
         incomePickerInput.parentNode.insertBefore(incomePicker, incomePickerInput);
 
-        // Xử lý event khi người dùng chọn độ tuổi
+        // Xử lý event khi người dùng chọn
         datePicker.addEventListener("change", function () {
             const selectedOption = datePicker.options[datePicker.selectedIndex];
             const start = selectedOption.dataset.start;
